@@ -23,13 +23,15 @@ using System.Reflection.Metadata.Ecma335;
 
 //BONUS: create un metodo che restituisca il codice con un pad left di 0 per arrivare a 8 caratteri (ad esempio codice 91 diventa 00000091, mentre codice 123445567 resta come è)
 
-Prodotto mioProdotto = new Prodotto(123, "iphone", "verde", 2.99f);
+Prodotto mioProdotto = new Prodotto(123, "iphone", "verde", 2.99f, "");
 
 Console.WriteLine($"Il codice del tuo prodotto è: {mioProdotto.GetCode()}");
 Console.WriteLine($"Il nome del tuo prodotto è: {mioProdotto.GetName()}");
 Console.WriteLine($"La descrizione del tuo prodotto è: {mioProdotto.GetDescription()}");
 Console.WriteLine($"Il prezzo del tuo prodotto è: {mioProdotto.GetPrice()}");
 Console.WriteLine($"L'IVA per il tuo prodotto è: {mioProdotto.GetIva()}");
+Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {mioProdotto.TaxedPrice()}");
+Console.WriteLine($"Il nome completo del tuo prodotto è: {mioProdotto.ExtendedName()}");
 public class Prodotto
 {
     private int code;
@@ -37,12 +39,15 @@ public class Prodotto
     private string description;
     private float price;
     private int iva = 25;
-    public Prodotto(int code, string name, string description, float price)
+    private string extended;
+    public Prodotto(int code, string name, string description, float price, string extended)
     {
         this.code = RandomCode();
         this.name = GetUserName();
         this.description = GetUserDescription();
         this.price = RandomPrice();
+        this.price = TaxedPrice();
+        this.extended = ExtendedName();
     }
     public int RandomCode()
     {
@@ -70,6 +75,17 @@ public class Prodotto
         return randomMoney;
     }
 
+    public float TaxedPrice()
+    {
+        float tax = price - ((price / 100) * iva);
+        return tax;
+    }
+    public string ExtendedName()
+    {
+        string extended = name + code;
+        return extended;
+    }
+
     public int GetCode()
     {
         return this.code;
@@ -89,5 +105,9 @@ public class Prodotto
     public int GetIva()
     {
         return this.iva;
+    }
+    public string GetExtended()
+    {
+        return this.extended;
     }
 }
