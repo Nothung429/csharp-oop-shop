@@ -25,26 +25,25 @@ using System.Reflection.Metadata.Ecma335;
 
 Prodotto mioProdotto = new Prodotto(123, "iphone", "verde", 2.99f);
 
-Console.WriteLine($"Il codice del tuo prodotto è: {mioProdotto.code}");
-Console.WriteLine($"Il nome del tuo prodotto è: {mioProdotto.name}");
-Console.WriteLine($"La descrizione del tuo prodotto è: {mioProdotto.description}");
-Console.WriteLine($"Il prezzo del tuo prodotto è: {mioProdotto.price}");
-Console.WriteLine($"L'IVA per il tuo prodotto è: {mioProdotto.iva}");
+Console.WriteLine($"Il codice del tuo prodotto è: {mioProdotto.GetCode()}");
+Console.WriteLine($"Il nome del tuo prodotto è: {mioProdotto.GetName()}");
+Console.WriteLine($"La descrizione del tuo prodotto è: {mioProdotto.GetDescription()}");
+Console.WriteLine($"Il prezzo del tuo prodotto è: {mioProdotto.GetPrice()}");
+Console.WriteLine($"L'IVA per il tuo prodotto è: {mioProdotto.GetIva()}");
 public class Prodotto
 {
-    public int code;
-    public string name;
-    public string description;
-    public float price;
-    public int iva = 25;
+    private int code;
+    private string name;
+    private string description;
+    private float price;
+    private int iva = 25;
     public Prodotto(int code, string name, string description, float price)
     {
         this.code = RandomCode();
-        this.name = GetName();
-        this.description = GetDescription();
+        this.name = GetUserName();
+        this.description = GetUserDescription();
         this.price = RandomPrice();
     }
-
     public int RandomCode()
     {
         Random r = new Random();
@@ -52,13 +51,13 @@ public class Prodotto
         return randomCoding;
     }
 
-    public string GetName()
+    public string GetUserName()
     {
         Console.WriteLine("Inserisci il nome del prodotto: ");        
         return Console.ReadLine(); ;
     }
 
-    public string GetDescription()
+    public string GetUserDescription()
     {
         Console.WriteLine("Inserisci la descrizione del prodotto: ");
         return Console.ReadLine();
@@ -69,5 +68,26 @@ public class Prodotto
         Random r = new Random();
         float randomMoney = r.Next(1, 99);
         return randomMoney;
+    }
+
+    public int GetCode()
+    {
+        return this.code;
+    }
+    public string GetName()
+    {
+        return this.name;
+    }
+    public string GetDescription()
+    {
+        return this.description;
+    }
+    public float GetPrice()
+    {
+        return this.price;
+    }
+    public int GetIva()
+    {
+        return this.iva;
     }
 }
