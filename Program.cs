@@ -37,38 +37,34 @@ public class Prodotto
     public string description;
     public float price;
     public int iva = 25;
-    public Prodotto(int code, string newName, string newDescription, float price)
+    public Prodotto(int code, string name, string description, float price)
     {
-        this.code = randomCode();
-        this.name = GetName(newName);
-        this.description = GetDescription(newDescription);
-        this.price = randomPrice();
+        this.code = RandomCode();
+        this.name = GetName();
+        this.description = GetDescription();
+        this.price = RandomPrice();
     }
 
-    public int randomCode()
+    public int RandomCode()
     {
         Random r = new Random();
         int randomCoding = r.Next(10000000, 99999999);
         return randomCoding;
     }
 
-    public string GetName(string newName)
+    public string GetName()
     {
-        Console.WriteLine("Inserisci il nome del prodotto: ");
-        Console.ReadLine();
-        this.name = newName;
-        return newName;
+        Console.WriteLine("Inserisci il nome del prodotto: ");        
+        return Console.ReadLine(); ;
     }
 
-    public string GetDescription(string newDescription)
+    public string GetDescription()
     {
         Console.WriteLine("Inserisci la descrizione del prodotto: ");
-        Console.ReadLine();
-        this.description = newDescription;
-        return newDescription;
+        return Console.ReadLine();
     }
 
-    public float randomPrice()
+    public float RandomPrice()
     {
         Random r = new Random();
         float randomMoney = r.Next(1, 99);
