@@ -5,4 +5,4 @@
     {
         this.name = name;
     }
-} 
+}

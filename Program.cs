@@ -56,7 +56,7 @@ int digit = Convert.ToInt32(Console.ReadLine());
 switch (digit)
 {
     case 1:
-        Product myProduct = new Product(123, "iphone", "verde", 2.99f, 2.4f, "");
+        Product myProduct = new Product(0, "", "", 0.0f, 0.0f, "");
 
         Console.WriteLine($"Il codice del tuo prodotto è: {myProduct.code}");
         Console.WriteLine($"Il nome del tuo prodotto è: {myProduct.name}");
@@ -68,7 +68,7 @@ switch (digit)
         break;
 
     case 2:
-        Water myWater = new Water(123, "sorgiva", "bella", 2.99f, 2.4f, "", 1.2f, 7, "levissima");
+        Water myWater = new Water(0, "", "", 0.0f, 0.0f, "", 0.0f, "");
 
         Console.WriteLine($"Il codice del tuo prodotto è: {myWater.code}");
         Console.WriteLine($"Il nome del tuo prodotto è: {myWater.name}");
@@ -77,13 +77,14 @@ switch (digit)
         Console.WriteLine($"L'IVA per il tuo prodotto è: {myWater.iva}");
         Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myWater.TaxedPrice()}$");
         Console.WriteLine($"Il nome completo del tuo prodotto è: {myWater.ExtendedName()}");
-        Console.WriteLine($"I litri nella bottiglia sono: {myWater.litres}");
         Console.WriteLine($"Il pH dell'acqua è: {myWater.pH}");
-        Console.WriteLine($"La sorgente dell'acqua è: {myWater.source}");
+        Console.WriteLine($"La sorgente dell'acqua è: {myWater.Source}");
+        Console.WriteLine($"I litri nella bottiglia sono: {myWater.Litres}");
+        //Console.WriteLine($"In galloni: {myWater.ConvertToGallons()}");
         break;
 
     case 3:
-        Fruit myFruit = new Fruit(123, "sorgiva", "bella", 2.99f, 2.4f, "", 4);
+        Fruit myFruit = new Fruit(0, "", "", 0.0f, 0.0f, "", 0);
 
         Console.WriteLine($"Il codice del tuo prodotto è: {myFruit.code}");
         Console.WriteLine($"Il nome del tuo prodotto è: {myFruit.name}");
@@ -96,7 +97,7 @@ switch (digit)
         break;
 
     case 4:
-        Electronics myElectronics = new Electronics(123, "iphone", "verde", 2.99f, 2.4f, "", "whirpool");
+        Electronics myElectronics = new Electronics(0, "", "", 0.0f, 0.0f, "", "");
 
         Console.WriteLine($"Il codice del tuo prodotto è: {myElectronics.code}");
         Console.WriteLine($"Il nome del tuo prodotto è: {myElectronics.name}");
@@ -109,7 +110,7 @@ switch (digit)
         break;
 
     case 5:
-        TinFood myTinFood = new TinFood(123, "iphone", "verde", 2.99f, 2.4f, "", "ruggiero", 250);
+        TinFood myTinFood = new TinFood(0, "", "", 0.0f, 0.0f, "", "", 0);
 
         Console.WriteLine($"Il codice del tuo prodotto è: {myTinFood.code}");
         Console.WriteLine($"Il nome del tuo prodotto è: {myTinFood.name}");
@@ -122,4 +123,3 @@ switch (digit)
         Console.WriteLine($"Il peso della scatoletta è: {myTinFood.weight}");
         break;
 }
-
