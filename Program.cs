@@ -1,113 +1,46 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Reflection.Metadata.Ecma335;
-//Creare una classe Prodotto che gestisce i prodotti dello shop.
-//Un prodotto è caratterizzato da:
-//codice(numero intero)
-//nome
-//descrizione
-//prezzo
-//iva
+﻿//A partire da quanto già fatto con csharp-oop-shop dove vi era stato chiesto di creare una classe Prodotto generica per gestire un generico prodotto dello Shop, vi chiedo di essere più specifichi e di creare le sottoclassi opportune di alcuni prodotti che potremmo identificare nel nostro shop.
 
-//Usate opportunamente i livelli di accesso (public, private):
-//i costruttori,
-//i metodi getter e setter
-//eventuali altri metodi di “utilità” per fare in modo che:
-//alla creazione di un nuovo prodotto il codice sia valorizzato con un numero random
-//Il codice prodotto sia accessibile solo in lettura
+//In particolare immaginiamo che nel nostro shop possiamo commerciare le seguenti tipologie di prodotto:
+//    Acqua(massimo 1.5L)
+//    Sacchetto di Frutta a pezzi (al massimo puo contenere 5 pezzi di frutta)
+//    Elettrodomestico
+//    Cibo in Scatola (al massimo può contenere 300g di peso su una scatola)
 
-//Gli altri attributi siano accessibili sia in lettura che in scrittura
-//Il prodotto esponga sia un metodo per avere il prezzo base che uno per avere il prezzo comprensivo di iva
-//Il prodotto esponga un metodo per avere il nome esteso, ottenuto concatenando codice + nome
+//Per ognuno dei seguenti prodotti più specifici vi si chiede di identificare quali potrebbero essere i loro attributi e metodi che eventualmente gli riguardano, ereditando i metodi e gli attributi generici dalla classe Prodotto creata nell’esercizio precedente.
 
-//Nella vostro programma principale, testate tutte le funzionalità della classe Prodotto.
+//Un esempio per la classe Acqua che eredità Prodotto è aggiungere i seguenti attributi e metodi:
+//    attributo litri: per indicare quanti litri di acqua ci sono nella bottiglia di acqua
+//    attributo ph: che indica il livello di acidità dell’acqua (sola lettura)
+//    attributo sorgente: che indica la sorgente di provenienza dell’acqua (sola lettura)
+//    ... ecc ecc
+//    metodo bevi (double litriDaBere) che toglie dall’attributo litri una quantità pari a litriDaBere di acqua se presenti.
+//    metodo riempi(double litri) che riempie la bottiglia di acqua con tot litri di acqua, stando attenti a non riempirla troppo.
+//    metodo svuota() che rimuove tutta l’acqua dalla bottiglia.
 
-//BONUS: create un metodo che restituisca il codice con un pad left di 0 per arrivare a 8 caratteri (ad esempio codice 91 diventa 00000091, mentre codice 123445567 resta come è)
+//    metodo stampaProdotto() che fa l’override del metodo di base StampaProdotto già dichiarato nella superclasse Prodotto (se non lo avete già fatto dichiaratelo anche nella classe prodotto è si occupa di stampare il “codice - nome”, l lo abbiamo chiamato NomeEsteso), per stampare oltre al codice e al nome dell’acqua, anche la sua sorgente, il ph e i litri contenuti.
 
-Prodotto mioProdotto = new Prodotto(123, "iphone", "verde", 2.99f, "");
+//    un metodo statico convertiInGalloni(double litri) che presa una quantità di litri restituisca la conversione dei litri in galloni, sapendo che 1 litro è equivalente a 3,785 galloni (ricordatevi di codificare le costanti come 3.785 nel modo corretto come visto in classe).
 
-Console.WriteLine($"Il codice del tuo prodotto è: {mioProdotto.GetCode()}");
-Console.WriteLine($"Il nome del tuo prodotto è: {mioProdotto.GetName()}");
-Console.WriteLine($"La descrizione del tuo prodotto è: {mioProdotto.GetDescription()}");
-Console.WriteLine($"Il prezzo del tuo prodotto è: {mioProdotto.GetPrice()}");
-Console.WriteLine($"L'IVA per il tuo prodotto è: {mioProdotto.GetIva()}");
-Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {mioProdotto.TaxedPrice()}");
-Console.WriteLine($"Il nome completo del tuo prodotto è: {mioProdotto.ExtendedName()}");
-public class Prodotto
-{
-    private int code;
-    private string name;
-    private string description;
-    private float price;
-    private int iva = 25;
-    private string extended;
-    public Prodotto(int code, string name, string description, float price, string extended)
-    {
-        this.code = RandomCode();
-        this.name = GetUserName();
-        this.description = GetUserDescription();
-        this.price = RandomPrice();
-        this.price = TaxedPrice();
-        this.extended = ExtendedName();
-    }
-    public int RandomCode()
-    {
-        Random r = new Random();
-        int randomCoding = r.Next(10000000, 99999999);
-        return randomCoding;
-    }
+//Ricordatevi di creare questi metodi in maniera responsabile, in modo che non rendono “incoerente” lo stato dei vostri oggetti (ad esempio non posso bere più dei litri contenuti nella bottiglia, o non posso riempire più di tot una bottiglia!).
 
-    public string GetUserName()
-    {
-        Console.WriteLine("Inserisci il nome del prodotto: ");        
-        return Console.ReadLine(); ;
-    }
+//E così via per tutti gli altri elementi qui sopra riportati, provate a pensare attributi e metodi che potrebbero servire ai vostri prodotti specializzati Acqua, sacchetto di frutta a pezzi, elettrodomestici e cibo in scatola.
 
-    public string GetUserDescription()
-    {
-        Console.WriteLine("Inserisci la descrizione del prodotto: ");
-        return Console.ReadLine();
-    }
+//Al solito usate opportunamente i livelli di accesso (public, private, protected o altro se necessario), i costruttori, i metodi getter e setter (o le properties) ed eventuali altri metodi di “utilità“.
 
-    public float RandomPrice()
-    {
-        Random r = new Random();
-        float randomMoney = r.Next(1, 99);
-        return randomMoney;
-    }
+//Pensate anche se avete bisogno di eventuali metodi statici o attributi statici (ad esempio potrebbero essere i limiti dei vostri oggetti ), e ad eventuali override e overload di metodi come visto per Acqua.
 
-    public float TaxedPrice()
-    {
-        float tax = price - ((price / 100) * iva);
-        return tax;
-    }
-    public string ExtendedName()
-    {
-        string extended = name + code;
-        return extended;
-    }
+//Una volta finite più o meno le vostre classi, nel Program.cs, provate a testare un pò i vostri prodotti specializzati, osservando come i metodi della classe generica prodotto e quelli più specifici vengono richiamati e siano disponibili.
 
-    public int GetCode()
-    {
-        return this.code;
-    }
-    public string GetName()
-    {
-        return this.name;
-    }
-    public string GetDescription()
-    {
-        return this.description;
-    }
-    public float GetPrice()
-    {
-        return this.price;
-    }
-    public int GetIva()
-    {
-        return this.iva;
-    }
-    public string GetExtended()
-    {
-        return this.extended;
-    }
-}
+//Parte 1
+Product mioProduct = new Product(123, "iphone", "verde", 2.99f, "");
+
+Console.WriteLine($"Il codice del tuo prodotto è: {mioProduct.code}");
+Console.WriteLine($"Il nome del tuo prodotto è: {mioProduct.name}");
+Console.WriteLine($"La descrizione del tuo prodotto è: {mioProduct.description}");
+Console.WriteLine($"Il prezzo del tuo prodotto è: {mioProduct.price}€");
+Console.WriteLine($"L'IVA per il tuo prodotto è: {mioProduct.iva}");
+Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {mioProduct.TaxedPrice()}€");
+Console.WriteLine($"Il nome completo del tuo prodotto è: {mioProduct.ExtendedName()}");
+
+//Parte 2
+
