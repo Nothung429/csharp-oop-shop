@@ -57,69 +57,26 @@ switch (digit)
 {
     case 1:
         Product myProduct = new Product(0, "", "", 0.0f, 0.0f, "");
-
-        Console.WriteLine($"Il codice del tuo prodotto è: {myProduct.code}");
-        Console.WriteLine($"Il nome del tuo prodotto è: {myProduct.name}");
-        Console.WriteLine($"La descrizione del tuo prodotto è: {myProduct.description}");
-        Console.WriteLine($"Il prezzo del tuo prodotto è: {myProduct.price}$");
-        Console.WriteLine($"L'IVA per il tuo prodotto è: {myProduct.iva}");
-        Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myProduct.TaxedPrice()}$");
-        Console.WriteLine($"Il nome completo del tuo prodotto è: {myProduct.ExtendedName()}");
+        myProduct.Stampa();
         break;
 
     case 2:
         Water myWater = new Water(0, "", "", 0.0f, 0.0f, "", 0.0f, "");
-
-        Console.WriteLine($"Il codice del tuo prodotto è: {myWater.code}");
-        Console.WriteLine($"Il nome del tuo prodotto è: {myWater.name}");
-        Console.WriteLine($"La descrizione del tuo prodotto è: {myWater.description}");
-        Console.WriteLine($"Il prezzo del tuo prodotto è: {myWater.price}$");
-        Console.WriteLine($"L'IVA per il tuo prodotto è: {myWater.iva}");
-        Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myWater.TaxedPrice()}$");
-        Console.WriteLine($"Il nome completo del tuo prodotto è: {myWater.ExtendedName()}");
-        Console.WriteLine($"Il pH dell'acqua è: {myWater.pH}");
-        Console.WriteLine($"La sorgente dell'acqua è: {myWater.Source}");
-        Console.WriteLine($"I litri nella bottiglia sono: {myWater.Litres}");
-        //Console.WriteLine($"In galloni: {myWater.ConvertToGallons()}");
+        myWater.Stampa();
         break;
 
     case 3:
         Fruit myFruit = new Fruit(0, "", "", 0.0f, 0.0f, "", 0);
-
-        Console.WriteLine($"Il codice del tuo prodotto è: {myFruit.code}");
-        Console.WriteLine($"Il nome del tuo prodotto è: {myFruit.name}");
-        Console.WriteLine($"La descrizione del tuo prodotto è: {myFruit.description}");
-        Console.WriteLine($"Il prezzo del tuo prodotto è: {myFruit.price}$");
-        Console.WriteLine($"L'IVA per il tuo prodotto è: {myFruit.iva}");
-        Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myFruit.TaxedPrice()}$");
-        Console.WriteLine($"Il nome completo del tuo prodotto è: {myFruit.ExtendedName()}");
-        Console.WriteLine($"Il numero di pezzi di frutta è: {myFruit.pieces}");
+        myFruit.Stampa();
         break;
 
     case 4:
         Electronics myElectronics = new Electronics(0, "", "", 0.0f, 0.0f, "", "");
-
-        Console.WriteLine($"Il codice del tuo prodotto è: {myElectronics.code}");
-        Console.WriteLine($"Il nome del tuo prodotto è: {myElectronics.name}");
-        Console.WriteLine($"La descrizione del tuo prodotto è: {myElectronics.description}");
-        Console.WriteLine($"Il prezzo del tuo prodotto è: {myElectronics.price}$");
-        Console.WriteLine($"L'IVA per il tuo prodotto è: {myElectronics.iva}");
-        Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myElectronics.TaxedPrice()}$");
-        Console.WriteLine($"Il nome completo del tuo prodotto è: {myElectronics.ExtendedName()}");
-        Console.WriteLine($"La marca dell'elettrodomestico è: {myElectronics.brand}");
+        myElectronics.Stampa();
         break;
 
     case 5:
         TinFood myTinFood = new TinFood(0, "", "", 0.0f, 0.0f, "", "", 0);
-
-        Console.WriteLine($"Il codice del tuo prodotto è: {myTinFood.code}");
-        Console.WriteLine($"Il nome del tuo prodotto è: {myTinFood.name}");
-        Console.WriteLine($"La descrizione del tuo prodotto è: {myTinFood.description}");
-        Console.WriteLine($"Il prezzo del tuo prodotto è: {myTinFood.price}$");
-        Console.WriteLine($"L'IVA per il tuo prodotto è: {myTinFood.iva}");
-        Console.WriteLine($"Il prezzo del tuo prodotto con l'IVA è: {myTinFood.TaxedPrice()}$");
-        Console.WriteLine($"Il nome completo del tuo prodotto è: {myTinFood.ExtendedName()}");
-        Console.WriteLine($"La marca della scatoletta è: {myTinFood.brand}");
-        Console.WriteLine($"Il peso della scatoletta è: {myTinFood.weight}");
+        myTinFood.Stampa();
         break;
 }
